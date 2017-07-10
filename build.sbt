@@ -5,20 +5,21 @@ import BuildSettings._
 import Dependencies._
 import Bundle._
 
-import io.gatling.build.SonatypeReleasePlugin
+//import io.gatling.build.SonatypeReleasePlugin
 
 // Root project
 
 lazy val root = Project("gatling-highcharts", file("."))
-  .enablePlugins(SonatypeReleasePlugin)
+  //.enablePlugins(SonatypeReleasePlugin)
   .aggregate(gatlingChartsHighcharts, gatlingHighchartsBundle)
   .settings(basicSettings: _*)
+  .settings(publishSettings: _*)
   .settings(noArtifactToPublish)
 
 // Modules
 
 def gatlingHighchartsModule(id: String) = Project(id, file(id))
-  .enablePlugins(SonatypeReleasePlugin)
+  //.enablePlugins(SonatypeReleasePlugin)
   .settings(gatlingHighchartsModuleSettings: _*)
 
 lazy val gatlingChartsHighcharts = gatlingHighchartsModule("gatling-charts-highcharts")
